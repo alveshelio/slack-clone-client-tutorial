@@ -9,9 +9,9 @@ const RegisterForm = ({
   email,
   password,
   onChange,
-  onSubmit,
+  register,
 }) => (
-  <StyledForm onSubmit={onSubmit}>
+  <StyledForm>
     <TextField
       required
       label='username'
@@ -40,7 +40,12 @@ const RegisterForm = ({
       margin='normal'
       fullWidth
     />
-    <Button variant='raised' color='primary' fullWidth onClick={onSubmit}>
+    <Button
+      variant='raised'
+      color='primary'
+      fullWidth
+      onClick={register}
+    >
       Sign Up
     </Button>
   </StyledForm>
@@ -51,7 +56,7 @@ RegisterForm.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
 };
 
 export default RegisterForm;

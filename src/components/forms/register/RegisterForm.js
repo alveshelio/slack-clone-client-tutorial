@@ -10,6 +10,7 @@ const RegisterForm = ({
   password,
   onChange,
   register,
+  errors,
 }) => (
   <StyledForm>
     <TextField
@@ -20,6 +21,8 @@ const RegisterForm = ({
       name='username'
       margin='normal'
       fullWidth
+      error={errors.username.status}
+      helperText={errors.username.helperText}
     />
     <TextField
       required
@@ -29,6 +32,8 @@ const RegisterForm = ({
       name='email'
       margin='normal'
       fullWidth
+      error={errors.email.status}
+      helperText={errors.email.helperText}
     />
     <TextField
       required
@@ -39,6 +44,8 @@ const RegisterForm = ({
       name='password'
       margin='normal'
       fullWidth
+      error={errors.password.status}
+      helperText={errors.password.helperText}
     />
     <Button
       variant='raised'
@@ -57,6 +64,20 @@ RegisterForm.propTypes = {
   password: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
+  errors: PropTypes.shape({
+    username: PropTypes.shape({
+      status: PropTypes.bool.isRequired,
+      helperText: PropTypes.string,
+    }).isRequired,
+    email: PropTypes.shape({
+      status: PropTypes.bool.isRequired,
+      helperText: PropTypes.string,
+    }).isRequired,
+    password: PropTypes.shape({
+      status: PropTypes.bool.isRequired,
+      helperText: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default RegisterForm;

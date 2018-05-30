@@ -18,7 +18,9 @@ const CenteredTabs = styled(Tabs)`
 
 const REGISTER_MUTATION = gql`
   mutation($username: String!, $email: String!, $password: String!) {
-    register(username: $username, email: $email, password: $password)
+    register(username: $username, email: $email, password: $password) {
+      email, password
+    }
   }
 `;
 

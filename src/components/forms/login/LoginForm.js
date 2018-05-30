@@ -9,6 +9,7 @@ const LoginForm = ({
   password,
   onChange,
   onSubmit,
+  errors,
 }) => (
   <StyledForm onSubmit={onSubmit}>
     <TextField
@@ -19,6 +20,8 @@ const LoginForm = ({
       name='email'
       fullWidth
       margin='normal'
+      error={errors.email.status}
+      helperText={errors.email.helperText}
     />
 
     <TextField
@@ -30,6 +33,8 @@ const LoginForm = ({
       name='password'
       fullWidth
       margin='normal'
+      error={errors.password.status}
+      helperText={errors.password.helperText}
     />
 
     <Button variant='raised' color='primary' fullWidth>
@@ -43,6 +48,16 @@ LoginForm.propTypes = {
   password: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  errors: PropTypes.shape({
+    email: PropTypes.shape({
+      status: PropTypes.bool.isRequired,
+      helperText: PropTypes.string,
+    }).isRequired,
+    password: PropTypes.shape({
+      status: PropTypes.bool.isRequired,
+      helperText: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default LoginForm;
